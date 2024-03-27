@@ -1,2 +1,42 @@
 # clear_collection_project
 Write a script for creating and clearing a collection of elements with the following functionality.
+
+There is an input into which the user enters the desired number of elements. After clicking the Create button, a collection with the appropriate number of elements should be rendered (added to the DOM) and the value in the input should be cleared. When you click the Create button again, the new one should render on top of the old collection. After clicking the Destroy button, the collection of items should be cleared.
+
+<div id="controls">
+   <input type="number" min="1" max="100" step="1" />
+   <button type="button" data-create>Create</button>
+   <button type="button" data-destroy>Destroy</button>
+</div>
+
+<div id="boxes"></div>
+
+After the user clicks on the Create button, the value in input must be validated, it must be in the range from 1 to 100 inclusive. Only if it satisfies the condition should new <div> elements be added to the DOM.
+
+To render elements on the page, create the createBoxes(amount) function, which accepts one parameter — a number that stores the number of elements to render.
+
+
+The function should create as many <div> elements as specified in the amount parameter and add them to the DOM as child elements for div#boxes.
+
+The dimensions of the first <div> element should be 30px by 30px.
+Each subsequent element should be wider and higher than the previous one by 10px.
+All elements should have a random background color. Use the built-in getRandomHexColor() function to get a random color.
+
+
+function getRandomHexColor() {
+   return `#${Math.floor(Math.random() * 16777215)
+     .toString(16)
+     .padStart(6, 0)}`;
+}
+
+
+To clear the collection after clicking the Destroy button, create a destroyBoxes() function that clears the contents of the div#boxes, thus removing all the created items.
+
+What the mentor will pay attention to during the inspection:
+
+After clicking the Create button, if the input value is outside the range 1-100, nothing happens
+After clicking the Create button, the number of multi-colored squares specified in input is added to div#boxes. The input value is cleared
+After clicking the Create button again, the previous squares are completely removed and new ones are added in their place in the amount specified in input. The input value is cleared
+All boxes in div#boxes are multi-colored and have a random background color
+The first square in div#boxes has dimensions of 30px by 30px, and each subsequent one is 10px higher and wider than the previous one
+After clicking on the Destroy button, all squares from div#boxes should be deleted
